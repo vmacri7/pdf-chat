@@ -75,14 +75,27 @@ def upload_audio():
         return jsonify({'message': 'audio uploaded successfully', 'filename': filename}), 200
     return jsonify({'error': 'invalid file type'}), 400
 
+def ensure_pdf_local(pdf_filename):
+    # ensure the pdf is available locally; download from gcs if not
+    local_path = os.path.join(app.config['PDF_FOLDER'], pdf_filename)
+    if not os.path.exists(local_path):
+        bucket = storage_client.bucket(BUCKET_NAME)
+        blob = bucket.blob(pdf_filename)
+        if not blob.exists():
+            return None
+        # download the blob to the local path
+        blob.download_to_filename(local_path)
+    return local_path
+
 # chat endpoint (pdf + audio to gemini, tts response)
 @app.route('/chat', methods=['POST'])
 def chat():
     pdf_filename = request.form.get('pdf_filename')
     if not pdf_filename:
         return jsonify({'error': 'missing pdf filename'}), 400
-    pdf_path = os.path.join(app.config['PDF_FOLDER'], pdf_filename)
-    if not os.path.exists(pdf_path):
+    # use helper to ensure local copy
+    pdf_path = ensure_pdf_local(pdf_filename)
+    if not pdf_path:
         return jsonify({'error': 'pdf file not found'}), 404
     # check for audio file in request
     if 'audio_file' not in request.files:
