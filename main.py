@@ -124,7 +124,7 @@ def call_gemini_with_pdf_and_audio(pdf_path, audio_path):
     # initialize gemini model
     model = genai.GenerativeModel(model_name='gemini-2.0-flash')
     # prompt for multimodal input
-    prompt = "you are a helpful assistant. answer the user's question about the pdf based on the audio input."
+    prompt = "You are a helpful assistant. Answer the user's question about the pdf based on the audio input.  Answer only in plain text, do not use markdown."
     # send to gemini
     response = model.generate_content([pdf_file, audio_file, prompt])
     return response.text.strip() if hasattr(response, 'text') else str(response)
