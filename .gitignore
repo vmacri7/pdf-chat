@@ -1,0 +1,8 @@
+# ignore uploaded files
+uploads/
+# ignore python cache
+__pycache__/
+# ignore environment files
+.env 
+
+pdf-chat-env/

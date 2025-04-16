@@ -1,0 +1,10 @@
+# flask web framework
+Flask==3.0.3
+werkzeug
+# google text-to-speech for tts
+google-cloud-texttospeech==2.17.2
+google-cloud-storage==2.19.0
+google-generativeai==0.8.4
+# for secure file uploads
+python-dotenv 
+gunicorn==22.0.0

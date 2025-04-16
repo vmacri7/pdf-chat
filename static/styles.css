@@ -1,0 +1,268 @@
+/* layout */
+body {
+    font-family: 'inter', sans-serif;
+    background: #f7f7fa;
+    color: #222;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    max-width: 100vw;
+    background: #f7f7fa;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    width: 450px;
+    background: #fff;
+    border-radius: 24px 0 0 24px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    padding: 2.5rem 2rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-width: 300px;
+    height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 1.5rem 0;
+    letter-spacing: -1px;
+    text-transform: none;
+}
+
+.upload-area {
+    border: 2px dashed #e0e6ef;
+    border-radius: 16px;
+    background: #fafbfc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5rem 1rem 1rem 1rem;
+    margin-bottom: 1.5rem;
+    min-height: 120px;
+    transition: border 0.2s;
+}
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    color: #7a8ca3;
+    font-size: 1.1rem;
+    gap: 0.5rem;
+}
+.upload-icon {
+    font-size: 2.2rem;
+    color: #4f8cff;
+}
+#pdf-upload-status {
+    margin-top: 0.7rem;
+    color: #4f8cff;
+    font-size: 0.98rem;
+}
+
+.pdf-list {
+    background: #f5f7fa;
+    border-radius: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-height: 120px;
+    max-height: 260px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
+.pdf-card {
+    padding: 0.9rem 1.2rem;
+    border-radius: 10px;
+    margin: 0 0.5rem;
+    background: transparent;
+    color: #222;
+    font-size: 1.08rem;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+    border: none;
+    outline: none;
+    text-align: left;
+}
+.pdf-card.selected, .pdf-card:hover {
+    background: #e6f0ff;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+/* chat area */
+.chat-area {
+    flex: 1;
+    background: #fff;
+    border-radius: 0 24px 24px 0;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    padding: 2.5rem 2.5rem 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-width: 0;
+}
+#chat-header {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 1.5rem 0;
+    letter-spacing: -1px;
+    text-transform: none;
+}
+#current-pdf {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.messages {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    margin-bottom: 2.5rem;
+}
+
+.message {
+    max-width: 70%;
+    padding: 1rem 1.2rem;
+    border-radius: 14px;
+    font-size: 1.08rem;
+    line-height: 1.5;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    background: #f5f7fa;
+    color: #222;
+    align-self: flex-start;
+    position: relative;
+    word-break: break-word;
+}
+.message.user {
+    background: #e6f0ff;
+    color: #2563eb;
+    align-self: flex-end;
+}
+
+/* mic button */
+.mic-btn {
+    position: absolute;
+    bottom: 2.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 32px;
+    min-width: 220px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.18rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.10);
+    cursor: pointer;
+    transition: 
+        background 0.18s,
+        box-shadow 0.18s,
+        color 0.18s,
+        border 0.18s;
+    z-index: 10;
+    padding: 0 32px;
+    letter-spacing: 0.01em;
+    text-align: center;
+}
+.mic-btn:disabled {
+    background: #b0c4ff;
+    cursor: not-allowed;
+}
+.mic-icon {
+    font-size: 2.1rem;
+}
+
+/* mic button listening (press to stop) state */
+.mic-btn.listening {
+    background: transparent;
+    color: #ef4444; /* red-500 */
+    border: 2.5px solid #ef4444;
+    box-shadow: 0 0 0 0 #ef4444, 0 0 16px 4px #fecaca;
+    animation: pulse-red 1.2s infinite;
+    transition: 
+        background 0.18s,
+        color 0.18s,
+        border 0.18s,
+        box-shadow 0.18s;
+}
+
+/* red pulse animation for listening state */
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 #fecaca, 0 0 16px 4px #fecaca; }
+    70% { box-shadow: 0 0 0 12px rgba(239,68,68,0); }
+    100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+}
+
+/* audio player in chat */
+#tts-audio {
+    margin-top: 0.7rem;
+    width: 100%;
+    max-width: 320px;
+    border-radius: 8px;
+    background: #f5f7fa;
+}
+
+/* sidebar footer styles */
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e6ef;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.98rem;
+    color: #7a8ca3;
+}
+
+.sidebar-footer .github-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.18s;
+}
+
+.sidebar-footer .github-link:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+.sidebar-footer .author-name {
+    color: #7a8ca3;
+    font-size: 0.97rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    .sidebar, .chat-area {
+        border-radius: 0;
+        box-shadow: none;
+        padding: 1.2rem 1rem;
+    }
+    .chat-area {
+        min-height: 400px;
+    }
+} 

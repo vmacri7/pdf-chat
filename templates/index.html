@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pdf chat</title>
+    <!-- link to static css -->
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- left column: pdf selection -->
+        <div class="sidebar">
+            <h2>Gemini PDF Chat 🪼</h2>
+            <div class="upload-area" id="upload-area">
+                <form id="pdf-upload-form" enctype="multipart/form-data">
+                    <label for="pdf-file" class="upload-label">
+                        <span class="upload-icon">&#8679;</span>
+                        <span>upload a pdf</span>
+                    </label>
+                    <input type="file" id="pdf-file" name="pdf_file" accept="application/pdf" hidden required>
+                </form>
+                <div id="pdf-upload-status"></div>
+            </div>
+            <div class="pdf-list" id="pdf-cards-container"></div>
+            <footer class="sidebar-footer">
+                <a href="https://github.com/vmacri7/pdf-chat" target="_blank" rel="noopener" class="github-link">
+                    Github Repo
+                </a>
+                <span class="author-name">Vincenzo Macri · Conversational AI · Course Project</span>
+            </footer>
+        </div>
+        <!-- right column: chat -->
+        <div class="chat-area">
+            <h2 id="chat-header">chat with <span id="current-pdf">[select a pdf]</span></h2>
+            <div class="messages" id="chat-messages"></div>
+            <button id="chat-record-btn" class="mic-btn" disabled>
+                <span class="mic-icon">Select a PDF to start</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- include js -->
+    <script src="/static/scripts.js"></script>
+</body>
+</html> 
