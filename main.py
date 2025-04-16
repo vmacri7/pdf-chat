@@ -122,7 +122,7 @@ def call_gemini_with_pdf_and_audio(pdf_path, audio_path):
     pdf_file = genai.upload_file(pdf_path, mime_type='application/pdf')
     audio_file = genai.upload_file(audio_path, mime_type='audio/wav')
     # initialize gemini model
-    model = genai.GenerativeModel(model_name='gemini-1.5-flash')
+    model = genai.GenerativeModel(model_name='gemini-2.0-flash')
     # prompt for multimodal input
     prompt = "you are a helpful assistant. answer the user's question about the pdf based on the audio input."
     # send to gemini
