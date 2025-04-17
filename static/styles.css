@@ -265,4 +265,74 @@ body {
     .chat-area {
         min-height: 400px;
     }
+}
+
+/* mobile improvements for screens <= 600px */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        min-width: 0;
+    }
+    .sidebar {
+        width: 100vw;
+        min-width: 0;
+        padding: 1rem 0.5rem;
+        border-radius: 0;
+        box-shadow: none;
+        height: auto;
+    }
+    .sidebar h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    .upload-area {
+        padding: 1.2rem 0.5rem 0.7rem 0.5rem;
+        min-height: 80px;
+    }
+    .pdf-list {
+        padding: 0.2rem 0;
+        font-size: 0.98rem;
+    }
+    .pdf-card {
+        padding: 0.7rem 0.7rem;
+        font-size: 1rem;
+        margin: 0 0.2rem;
+    }
+    .sidebar-footer {
+        font-size: 0.9rem;
+        padding-top: 1rem;
+    }
+    .chat-area {
+        padding: 1rem 0.5rem 1rem 0.5rem;
+        border-radius: 0;
+        min-width: 0;
+        min-height: 300px;
+    }
+    #chat-header {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    .messages {
+        gap: 0.7rem;
+        margin-bottom: 1.2rem;
+    }
+    .message, .message.user {
+        max-width: 95vw;
+        font-size: 0.98rem;
+        padding: 0.7rem 0.8rem;
+    }
+    .mic-btn {
+        min-width: 140px;
+        height: 44px;
+        font-size: 1rem;
+        padding: 0 12px;
+        bottom: 1.2rem;
+    }
+    .mic-icon {
+        font-size: 1.5rem;
+    }
+    #tts-audio {
+        max-width: 95vw;
+    }
 } 
