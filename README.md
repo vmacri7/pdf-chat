@@ -1,5 +1,7 @@
 # pdf-chat
 
+conversational ai course project, spring 2025
+
 this is a flask webapp that allows users to upload a pdf and chat with it using their voice. the app sends the pdf and audio to the gemini llm, receives a response, and uses google tts to speak the response aloud. the app is structured for deployment on google cloud run.
 
 ## features
@@ -13,15 +15,12 @@ this is a flask webapp that allows users to upload a pdf and chat with it using 
    ```
    pip install -r requirements.txt
    ```
-2. set up your google cloud credentials and api keys in a `.env` file.
+2. set up your google cloud credentials and api keys using the gcloud cli
 3. run the app:
    ```
    python main.py
    ```
 
 ## deployment
-- designed for deployment on google cloud run
+- designed for deployment on google cloud run using cloud build
 
-## folders
-- `uploads/pdfs/` for uploaded pdf files
-- `uploads/audio/` for uploaded audio files
